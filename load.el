@@ -1,6 +1,7 @@
 (load (concat (file-name-directory load-file-name) "emacs_utils/load-all.el"))
 (load (concat (file-name-directory load-file-name) "emacs-bash-completion/bash-completion.el"))
-(load (concat (file-name-directory load-file-name) "keyboard-mappings.el")
+(load (concat (file-name-directory load-file-name) "keyboard-mappings.el"))
+(if (boundp 'mvs-after-loads) (funcall mvs-after-loads))
 (setq inhibit-splash-screen t)
 (setq tab-width 4)
 (setq default-tab-width 4)
@@ -14,8 +15,9 @@
             (setq tab-width 8)
             (ansi-color-for-comint-mode-on)))
 (setq rspec-shell-name "*shell*")
-(set-default-keyboard-mapping "mvs")
 (add-hook 'shell-dynamic-complete-functions
           'bash-completion-dynamic-complete)
 (add-hook 'shell-command-complete-functions
           'bash-completion-dynamic-complete)
+(if (boundp 'mvs-before-set-keyboard-mapping) (funcall mvs-before-set-keyboard-mapping))
+(set-default-keyboard-mapping "mvs")
