@@ -2,6 +2,17 @@
 (load (concat (file-name-directory load-file-name) "emacs-bash-completion/bash-completion.el"))
 (load (concat (file-name-directory load-file-name) "keyboard-mappings.el")
 (setq inhibit-splash-screen t)
+(setq tab-width 4)
+(setq default-tab-width 4)
+(setq-default indent-tabs-mode nil)
+(setq-default show-trailing-whitespace t)
+(column-number-mode)
+(global-linum-mode t)
+(setenv "PAGER" "cat")
+(add-hook 'shell-mode-hook
+          (lambda ()
+            (setq tab-width 8)
+            (ansi-color-for-comint-mode-on)))
 (setq rspec-shell-name "*shell*")
 (set-default-keyboard-mapping "mvs")
 (add-hook 'shell-dynamic-complete-functions
