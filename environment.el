@@ -1,0 +1,20 @@
+(if (boundp 'mvs-after-loads) (funcall mvs-after-loads))
+(setq inhibit-splash-screen t)
+(setq tab-width 4)
+(setq default-tab-width 4)
+(setq-default indent-tabs-mode nil)
+(setq-default show-trailing-whitespace t)
+(column-number-mode)
+(global-linum-mode t)
+(setenv "PAGER" "cat")
+(add-hook 'shell-mode-hook
+          (lambda ()
+            (setq tab-width 8)
+            (ansi-color-for-comint-mode-on)))
+(setq rspec-shell-name "*shell*")
+(add-hook 'shell-dynamic-complete-functions
+          'bash-completion-dynamic-complete)
+(add-hook 'shell-command-complete-functions
+          'bash-completion-dynamic-complete)
+(if (boundp 'mvs-before-set-keyboard-mapping) (funcall mvs-before-set-keyboard-mapping))
+(set-default-keyboard-mapping "mvs")

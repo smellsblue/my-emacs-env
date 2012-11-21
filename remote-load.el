@@ -1,0 +1,18 @@
+(defun remote-load (url)
+  "Remotely load the given url"
+  (let* ((remote-buffer (url-retrieve-synchronously url)))
+    (switch-to-buffer remote-buffer)
+    (goto-char (point-min))
+    (re-search-forward "^$" nil 'move)
+    (delete-region (point-min) (1+ (point)))
+    (eval-buffer)
+    (kill-buffer remote-buffer)))
+
+(remote-load "https://raw.github.com/on-site/emacs_utils/master/edit-utils.el")
+(remote-load "https://raw.github.com/on-site/emacs_utils/master/new-shell.el")
+(remote-load "https://raw.github.com/on-site/emacs_utils/master/rails-nav.el")
+(remote-load "https://raw.github.com/on-site/emacs_utils/master/run-rspec.el")
+(remote-load "https://raw.github.com/on-site/emacs_utils/master/define-keyboard-mappings.el")
+(remote-load "https://raw.github.com/szermatt/emacs-bash-completion/master/bash-completion.el")
+(remote-load "https://raw.github.com/mikestone/my-emacs-env/master/keyboard-mappings.el")
+(remote-load "https://raw.github.com/mikestone/my-emacs-env/master/environment.el")
