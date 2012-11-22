@@ -10,3 +10,6 @@
 [submodule "coffee-mode"]
 	path = coffee-mode
 	url = https://github.com/defunkt/coffee-mode.git
+[submodule "haml-mode"]
+	path = haml-mode
+	url = https://github.com/nex3/haml-mode.git
