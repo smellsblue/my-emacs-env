@@ -4,3 +4,9 @@
 [submodule "emacs_utils"]
 	path = emacs_utils
 	url = git://github.com/on-site/emacs_utils.git
+[submodule "sass-mode"]
+	path = sass-mode
+	url = https://github.com/nex3/sass-mode.git
+[submodule "coffee-mode"]
+	path = coffee-mode
+	url = https://github.com/defunkt/coffee-mode.git
