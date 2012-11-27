@@ -13,6 +13,7 @@
 (add-hook 'shell-mode-hook
           (lambda ()
             (setq tab-width 8)
+            (shell-up-down-minor-mode)
             (ansi-color-for-comint-mode-on)))
 (add-hook 'shell-dynamic-complete-functions
           'bash-completion-dynamic-complete)
