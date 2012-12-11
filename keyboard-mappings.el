@@ -56,6 +56,10 @@
     ("Suspend"
      ("M-z" suspend-frame))
 
+    ("Movement"
+     ("C-<down>" scroll-up)
+     ("C-<up>" scroll-down))
+
     ("Interrupt"
      ("s-c" comint-interrupt-subjob)
      ("<f9> c" comint-interrupt-subjob)))
