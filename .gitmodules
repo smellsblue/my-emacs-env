@@ -13,3 +13,6 @@
 [submodule "haml-mode"]
 	path = haml-mode
 	url = https://github.com/nex3/haml-mode.git
+[submodule "color-theme-molokai"]
+	path = color-theme-molokai
+	url = https://github.com/alloy-d/color-theme-molokai.git

@@ -19,3 +19,4 @@
 (remote-load "https://raw.github.com/nex3/sass-mode/master/sass-mode.el")
 (remote-load "https://raw.github.com/mikestone/my-emacs-env/master/keyboard-mappings.el")
 (remote-load "https://raw.github.com/mikestone/my-emacs-env/master/environment.el")
+(remote-load "https://raw.github.com/mikestone/my-emacs-env/master/remote-appearance.el")
