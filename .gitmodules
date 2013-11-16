@@ -16,3 +16,6 @@
 [submodule "color-theme-molokai"]
 	path = color-theme-molokai
 	url = https://github.com/alloy-d/color-theme-molokai.git
+[submodule "twilight-emacs"]
+	path = twilight-emacs
+	url = https://github.com/crafterm/twilight-emacs.git

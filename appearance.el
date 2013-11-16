@@ -4,5 +4,7 @@
   (eval-after-load "color-theme"
     '(progn
        (color-theme-initialize)
-       (load (concat (file-name-directory load-file-name) "color-theme-molokai/color-theme-molokai.el"))
-       (color-theme-molokai))))
+       ;;(load (concat (file-name-directory load-file-name) "color-theme-molokai/color-theme-molokai.el"))
+       ;;(color-theme-molokai))))
+       (load (concat (file-name-directory load-file-name) "twilight-emacs/color-theme-twilight.el"))
+       (color-theme-twilight))))
