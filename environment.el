@@ -7,9 +7,11 @@
 (setq inhibit-splash-screen t)
 (setq rspec-shell-name "*shell*")
 (setq tab-width 4)
+(setq sass-indent-offset 4)
 (setenv "PAGER" "cat")
 (column-number-mode)
 (global-linum-mode t)
+(add-to-list 'auto-mode-alist '("\\.scss$" . sass-mode))
 (add-hook 'shell-mode-hook
           (lambda ()
             (setq tab-width 8)
