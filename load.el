@@ -6,3 +6,4 @@
 (load (concat (file-name-directory load-file-name) "sass-mode/sass-mode.el"))
 (load (concat (file-name-directory load-file-name) "keyboard-mappings.el"))
 (load (concat (file-name-directory load-file-name) "environment.el"))
+(load (concat (file-name-directory load-file-name) "shell-size.el"))
