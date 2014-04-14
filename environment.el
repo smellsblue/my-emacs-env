@@ -23,3 +23,4 @@
           'bash-completion-dynamic-complete)
 (if (boundp 'mvs-before-set-keyboard-mapping) (funcall mvs-before-set-keyboard-mapping))
 (set-default-keyboard-mapping "mvs")
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
