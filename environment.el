@@ -14,6 +14,7 @@
 (add-to-list 'auto-mode-alist '("\\.scss$" . sass-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . javascript-mode))
 (add-hook 'shell-mode-hook
           (lambda ()
             (setq tab-width 8)
