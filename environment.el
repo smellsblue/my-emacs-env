@@ -26,3 +26,5 @@
 (if (boundp 'mvs-before-set-keyboard-mapping) (funcall mvs-before-set-keyboard-mapping))
 (set-default-keyboard-mapping "mvs")
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(set-default-font "Droid Sans Mono 12")
+(setq backup-directory-alist `(("." . "~/.saves")))
