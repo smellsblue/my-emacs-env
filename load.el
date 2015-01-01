@@ -7,3 +7,4 @@
 (load (concat (file-name-directory load-file-name) "keyboard-mappings.el"))
 (load (concat (file-name-directory load-file-name) "environment.el"))
 (load (concat (file-name-directory load-file-name) "shell-size.el"))
+(load (concat (file-name-directory load-file-name) "rvm.el/rvm.el"))

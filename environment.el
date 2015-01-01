@@ -29,3 +29,4 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (set-default-font "Droid Sans Mono 12")
 (setq backup-directory-alist `(("." . "~/.saves")))
+(rvm-use-default)
