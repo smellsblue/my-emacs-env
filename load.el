@@ -1,3 +1,4 @@
+(load (concat (file-name-directory load-file-name) "rvm.el/rvm.el"))
 (load (concat (file-name-directory load-file-name) "coffee-mode/coffee-mode.el"))
 (load (concat (file-name-directory load-file-name) "emacs_utils/load-all.el"))
 (load (concat (file-name-directory load-file-name) "appearance.el"))
@@ -7,4 +8,3 @@
 (load (concat (file-name-directory load-file-name) "keyboard-mappings.el"))
 (load (concat (file-name-directory load-file-name) "environment.el"))
 (load (concat (file-name-directory load-file-name) "shell-size.el"))
-(load (concat (file-name-directory load-file-name) "rvm.el/rvm.el"))
