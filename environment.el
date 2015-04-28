@@ -11,6 +11,8 @@
 (setenv "PAGER" "cat")
 (column-number-mode)
 (global-linum-mode t)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 (add-to-list 'auto-mode-alist '("\\.scss$" . sass-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
