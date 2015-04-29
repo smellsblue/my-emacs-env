@@ -2,7 +2,7 @@
 
 To load this environment remotely, simply execute the following from within emacs:
 
-    (let* ((url "https://raw.github.com/mikestone/my-emacs-env/master/remote-load.el")
+    (let* ((url "https://raw.github.com/smellsblue/my-emacs-env/master/remote-load.el")
            (remote-buffer (url-retrieve-synchronously url)))
       (switch-to-buffer remote-buffer)
       (goto-char (point-min))
