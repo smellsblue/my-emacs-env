@@ -8,6 +8,7 @@
 (setq rspec-shell-name "*shell*")
 (setq tab-width 4)
 (setq sass-indent-offset 4)
+(setq-default fill-column 80)
 (setenv "PAGER" "cat")
 (column-number-mode)
 (global-linum-mode t)
