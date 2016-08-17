@@ -33,6 +33,10 @@
 (defun delete-trailing-whitespace-except-markdown-files ()
   (when (not (string= (file-name-extension buffer-file-name) "md"))
     (delete-trailing-whitespace)))
-(set-default-font "Droid Sans Mono 12")
+(defcustom mvs-font "Droid Sans Mono 12"
+  "The default global font"
+  :type 'string
+  :group 'mvs)
+(set-default-font mvs-font)
 (setq backup-directory-alist `(("." . "~/.saves")))
 (rvm-use-default)
