@@ -20,6 +20,7 @@
 (add-to-list 'auto-mode-alist '("\\.json$" . javascript-mode))
 (add-hook 'shell-mode-hook
           (lambda ()
+            (linum-mode 0)
             (setq tab-width 8)
             (shell-up-down-minor-mode)
             (ansi-color-for-comint-mode-on)))
