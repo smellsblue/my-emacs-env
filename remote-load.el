@@ -13,11 +13,9 @@
 (remote-load "https://raw.github.com/on-site/emacs_utils/master/new-shell.el")
 (remote-load "https://raw.github.com/on-site/emacs_utils/master/rails-nav.el")
 (remote-load "https://raw.github.com/on-site/emacs_utils/master/run-rspec.el")
-(remote-load "https://raw.github.com/on-site/emacs_utils/master/define-keyboard-mappings.el")
 (remote-load "https://raw.github.com/szermatt/emacs-bash-completion/master/bash-completion.el")
 (remote-load "https://raw.github.com/nex3/haml-mode/master/haml-mode.el")
 (remote-load "https://raw.github.com/nex3/sass-mode/master/sass-mode.el")
-(remote-load "https://raw.github.com/smellsblue/my-emacs-env/master/keyboard-mappings.el")
 (remote-load "https://raw.github.com/smellsblue/my-emacs-env/master/environment.el")
 ;; This won't work unless I can load color theme remotely first.
 ;; (remote-load "https://raw.github.com/smellsblue/my-emacs-env/master/remote-appearance.el")

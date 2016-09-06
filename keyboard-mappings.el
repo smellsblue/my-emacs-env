@@ -1,3 +1,4 @@
+;; NOTE: This is deprecated
 (define-keyboard-mappings "mvs"
   '(("Buffers"
      ("C-b" switch-to-buffer)

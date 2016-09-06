@@ -28,8 +28,6 @@
           'bash-completion-dynamic-complete)
 (add-hook 'shell-command-complete-functions
           'bash-completion-dynamic-complete)
-(if (boundp 'mvs-before-set-keyboard-mapping) (funcall mvs-before-set-keyboard-mapping))
-(set-default-keyboard-mapping "mvs")
 (add-hook 'before-save-hook 'delete-trailing-whitespace-except-markdown-files)
 (defun delete-trailing-whitespace-except-markdown-files ()
   (when (not (string= (file-name-extension buffer-file-name) "md"))
