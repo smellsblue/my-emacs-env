@@ -1,0 +1,6 @@
+#name : class
+#group : control structure
+# --
+${1:public} class ${2:ClassName} {
+    $0
+}

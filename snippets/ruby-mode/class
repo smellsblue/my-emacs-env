@@ -1,0 +1,6 @@
+#name : class
+#group : control structure
+# --
+class ${1:ClassName}
+  $0
+end

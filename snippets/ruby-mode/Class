@@ -1,0 +1,6 @@
+#name : Class
+#group : control structure
+# --
+class ${1:ClassName} < ${2:SuperClassName}
+  $0
+end

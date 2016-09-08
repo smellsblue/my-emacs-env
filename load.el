@@ -5,5 +5,6 @@
 (load (concat (file-name-directory load-file-name) "emacs-bash-completion/bash-completion.el"))
 (load (concat (file-name-directory load-file-name) "haml-mode/haml-mode.el"))
 (load (concat (file-name-directory load-file-name) "sass-mode/sass-mode.el"))
+(load (concat (file-name-directory load-file-name) "yasnippet/yasnippet.el"))
 (load (concat (file-name-directory load-file-name) "environment.el"))
 (load (concat (file-name-directory load-file-name) "shell-size.el"))

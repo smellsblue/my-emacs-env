@@ -1,0 +1,6 @@
+#name : Method
+#group : control structure
+# --
+${1:public} static ${2:void} ${3:methodName}(${4:args}) {
+    $0
+}

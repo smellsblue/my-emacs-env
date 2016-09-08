@@ -1,0 +1,6 @@
+#name : Method
+#group : control structure
+# --
+def self.${1:method_name}(${2:args})
+  $0
+end

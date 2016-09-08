@@ -22,3 +22,6 @@
 [submodule "rvm.el"]
 	path = rvm.el
 	url = https://github.com/senny/rvm.el.git
+[submodule "yasnippet"]
+	path = yasnippet
+	url = https://github.com/capitaomorte/yasnippet

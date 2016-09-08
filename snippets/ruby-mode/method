@@ -1,0 +1,6 @@
+#name : method
+#group : control structure
+# --
+def ${1:method_name}(${2:args})
+  $0
+end

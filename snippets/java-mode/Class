@@ -1,0 +1,6 @@
+#name : Class
+#group : control structure
+# --
+${1:public} class ${2:ClassName} extends ${3:SuperClassName} {
+    $0
+}

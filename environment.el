@@ -39,3 +39,4 @@
 (set-default-font mvs-font)
 (setq backup-directory-alist `(("." . "~/.saves")))
 (rvm-use-default)
+(load (concat (file-name-directory load-file-name) "yasnippet-environment.el"))
