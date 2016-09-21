@@ -1,5 +1,6 @@
 (load (concat (file-name-directory load-file-name) "rvm.el/rvm.el"))
 (load (concat (file-name-directory load-file-name) "coffee-mode/coffee-mode.el"))
+(load (concat (file-name-directory load-file-name) "mustache-emacs/mustache-mode.el"))
 (load (concat (file-name-directory load-file-name) "emacs_utils/load-all.el"))
 (load (concat (file-name-directory load-file-name) "appearance.el"))
 (load (concat (file-name-directory load-file-name) "emacs-bash-completion/bash-completion.el"))

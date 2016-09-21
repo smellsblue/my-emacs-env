@@ -25,3 +25,6 @@
 [submodule "yasnippet"]
 	path = yasnippet
 	url = https://github.com/capitaomorte/yasnippet
+[submodule "mustache-emacs"]
+	path = mustache-emacs
+	url = git@github.com:mustache/emacs.git
