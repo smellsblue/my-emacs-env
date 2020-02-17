@@ -1,3 +1,4 @@
+(if (string-equal system-type "darwin") (load (concat (file-name-directory load-file-name) "mac-init.el")))
 (load (concat (file-name-directory load-file-name) "rvm.el/rvm.el"))
 (load (concat (file-name-directory load-file-name) "coffee-mode/coffee-mode.el"))
 (load (concat (file-name-directory load-file-name) "mustache-emacs/mustache-mode.el"))
@@ -9,3 +10,4 @@
 (if (boundp 'mvs-load-snippets) (load (concat (file-name-directory load-file-name) "yasnippet/yasnippet.el")))
 (load (concat (file-name-directory load-file-name) "environment.el"))
 (load (concat (file-name-directory load-file-name) "shell-size.el"))
+(load (concat (file-name-directory load-file-name) "commit-colors.el"))
