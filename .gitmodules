@@ -28,3 +28,6 @@
 [submodule "mustache-emacs"]
 	path = mustache-emacs
 	url = git@github.com:mustache/emacs.git
+[submodule "ruby-mode"]
+	path = ruby-mode
+	url = git@github.com:ruby/elisp.git

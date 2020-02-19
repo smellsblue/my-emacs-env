@@ -8,6 +8,7 @@
 (load (concat (file-name-directory load-file-name) "haml-mode/haml-mode.el"))
 (load (concat (file-name-directory load-file-name) "sass-mode/sass-mode.el"))
 (if (boundp 'mvs-load-snippets) (load (concat (file-name-directory load-file-name) "yasnippet/yasnippet.el")))
+(load (concat (file-name-directory load-file-name) "ruby-mode/ruby-mode.el"))
 (load (concat (file-name-directory load-file-name) "environment.el"))
 (load (concat (file-name-directory load-file-name) "shell-size.el"))
 (load (concat (file-name-directory load-file-name) "commit-colors.el"))
