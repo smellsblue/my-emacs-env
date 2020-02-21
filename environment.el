@@ -10,6 +10,7 @@
 (setq sass-indent-offset 4)
 (setq-default fill-column 80)
 (setq explicit-bash-args '("--login"))
+(setq ruby-insert-encoding-magic-comment nil)
 (push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
 (setenv "PAGER" "cat")
 (setenv "EDITOR" "emacs")
