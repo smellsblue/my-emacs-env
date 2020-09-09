@@ -40,7 +40,7 @@
   "The default global font"
   :type 'string
   :group 'mvs)
-(set-default-font mvs-font)
+(set-frame-font mvs-font nil t)
 (setq backup-directory-alist `(("." . "~/.saves")))
 (rvm-use-default)
 (if (boundp 'mvs-load-snippets) (load (concat (file-name-directory load-file-name) "yasnippet-environment.el")))
