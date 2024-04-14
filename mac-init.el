@@ -22,3 +22,6 @@
       (add-to-list 'default-frame-alist '(left . 0))
       (add-to-list 'default-frame-alist (cons 'width mvs-mac-window-width))
       (add-to-list 'default-frame-alist '(fullscreen . fullheight))))
+
+(global-set-key (kbd "<home>") 'move-beginning-of-line)
+(global-set-key (kbd "<end>") 'move-end-of-line)
