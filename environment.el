@@ -36,9 +36,9 @@
           'bash-completion-dynamic-complete)
 (add-hook 'shell-command-complete-functions
           'bash-completion-dynamic-complete)
-(add-hook 'before-save-hook 'delete-trailing-whitespace-except-markdown-files)
-(defun delete-trailing-whitespace-except-markdown-files ()
-  (when (not (string= (file-name-extension buffer-file-name) "md"))
+(add-hook 'before-save-hook 'delete-trailing-whitespace-except-markdown-and-diff-files)
+(defun delete-trailing-whitespace-except-markdown-and-diff-files ()
+  (when (not (member (file-name-extension buffer-file-name) '("md" "diff")))
     (delete-trailing-whitespace)))
 (defcustom mvs-font "Droid Sans Mono 12"
   "The default global font"
