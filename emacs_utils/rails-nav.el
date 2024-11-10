@@ -1,15 +1,3 @@
-(defmacro def-jump-to-file (fn-name help root-dir current-item retrieve-files-message retrieve-files load-file)
-  "Define a function to jump to a particular file based on a root directory function, a way to retrieve current context, a way to load known files, and how to load that specific file"
-  `(progn
-     (defun ,(intern fn-name) ()
-       ,help
-       (interactive)
-       (if ,root-dir
-           (let* ((default-item ,current-item)
-                  (item (completing-read (concat ,retrieve-files-message " (default " default-item "): ") ,retrieve-files nil 'confirm)))
-             (find-file (funcall ,load-file (if (equal item "") default-item item))))
-         (message "Cannot find project root!")))))
-
 (defmacro def-jump-to-rails (type retrieve-files)
   "Define a jump-to-rails- function to jump to a particular rails file"
   `(def-jump-to-file
@@ -50,55 +38,9 @@
    (lambda (x) (chomp-ends-with x ""))
    (rails-directory-files "config" ".*\\.*$")))
 
-(keymap-global-set "C-x j c" 'jump-to-rails-controller)
-(keymap-global-set "C-x j h" 'jump-to-rails-helper)
-(keymap-global-set "C-x j m" 'jump-to-rails-model)
-(keymap-global-set "C-x j s" 'jump-to-rails-spec)
-(keymap-global-set "C-x j t" 'jump-to-rails-test)
-(keymap-global-set "C-x j v" 'jump-to-rails-view)
-(keymap-global-set "C-x j g" 'jump-to-rails-config)
-
 (defun rails-directory-files (path regex)
   "Like a recursive version of directory-files, but for rails directories"
   (recursive-directory-files 'get-rails-path path regex))
-
-(defun recursive-directory-files (root-fn path regex &optional max-depth)
-  "Like a recursive version of directory-files, but use a function to determine the base path"
-  (compact (mapcar
-            (lambda (x)
-              (if (and x (string-match regex x)) x))
-            (flatten (recursive-directory-expand-files "" (funcall root-fn path) max-depth)))))
-
-(defun recursive-directory-expand-files (prefix path max-depth)
-  "Recursive helper function for recursive-directory-files"
-  (let ((path-dir (file-name-as-directory path)))
-    (mapcar (lambda (x)
-              (if (or (equal x ".") (equal x ".."))
-                  nil
-                (let ((path-x (concat path-dir x)))
-                  (if (file-directory-p path-x)
-                      (if (or (not max-depth) (> max-depth 0))
-                          (recursive-directory-expand-files (file-name-as-directory (concat prefix x)) path-x (if max-depth (- max-depth 1))))
-                    (concat prefix x)))))
-            (if (file-exists-p path-dir)
-                (directory-files path-dir nil nil t)))))
-
-;; Adapted from http://stackoverflow.com/questions/969067/name-of-this-function-in-built-in-emacs-lisp-library
-(defun flatten (x)
-  "Flatten a list, so all sub-list items become simple items in the array, so ((1 2) 3 (4 5)) becomes (1 2 3 4 5)"
-  (cond ((null x) nil)
-        ((listp x) (let (value)
-                     (dolist (elt x value)
-                       (setq value (append value (flatten elt))))))
-        (t (list x))))
-
-;; From http://stackoverflow.com/questions/3967320/lisp-function-to-remove-nils
-(defun compact (x)
-  "Compact a list, so all nils are removed, so (nil 1 2 3 nil 4) becomes (1 2 3 4)"
-  (if (listp x)
-      (mapcar #'compact
-              (remove nil x))
-    x))
 
 (defun get-rails-default-item (for-type maybe-type item action)
   "Get the default item for the given type, given the current item/type/action"
@@ -231,6 +173,12 @@
   "Split a rails item like 'account#index' into '('acount' 'index')"
   (split-string full-item "#"))
 
+(defun is-rails-project (&optional path-or-current)
+  "Determine if the current or given path is a rails project"
+  (let* ((path (or path-or-current "."))
+         (from-path (locate-rails-root path)))
+    (if from-path from-path)))
+
 (defun get-rails-path (path)
   "Get a path relative to the current rails root"
   (concat (get-rails-root) path))
@@ -259,31 +207,3 @@
              (file-directory-p (concat path-dir "app")))
         (and (file-exists-p (concat path-dir "config/application.rb"))
              (file-directory-p (concat path-dir "app"))))))
-
-(defun has-parent-directory (testing against)
-  "Determine if the first argument has the parent directory being the against argument"
-  (let ((testing-dir (file-name-as-directory (file-truename testing)))
-        (against-dir (file-name-as-directory (file-truename against))))
-    (cond ((equal testing-dir against-dir) t)
-          ((equal testing-dir "/") nil)
-          (t (has-parent-directory (concat testing-dir "..") against)))))
-
-(defun string-inside (string before after)
-  "Retrieve the string iside the before and after strings"
-  (let ((latter (chomp-starts-with string before)))
-    (if latter (chomp-ends-with latter after))))
-
-(defun chomp-starts-with (string value)
-  "Determine if the string starts with the value and chomp it if so, else nil"
-  (cond ((and (>= (length string) (length value))
-              (string-equal (substring string 0 (length value)) value))
-         (substring string (length value)))
-        (t nil)))
-
-(defun chomp-ends-with (string value)
-  "Determine if the string ends with the value and chomp it if so, else nil"
-  (let ((endlength (- (length string) (length value))))
-    (cond ((and (>= (length string) (length value))
-                (equal value (substring string endlength)))
-           (substring string 0 endlength))
-          (t nil))))
