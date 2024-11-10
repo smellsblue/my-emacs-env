@@ -1,4 +1,4 @@
-(defmacro def-jump-to-file (binding fn-name help root-dir current-item retrieve-files-message retrieve-files load-file)
+(defmacro def-jump-to-file (fn-name help root-dir current-item retrieve-files-message retrieve-files load-file)
   "Define a function to jump to a particular file based on a root directory function, a way to retrieve current context, a way to load known files, and how to load that specific file"
   `(progn
      (defun ,(intern fn-name) ()
@@ -8,14 +8,11 @@
            (let* ((default-item ,current-item)
                   (item (completing-read (concat ,retrieve-files-message " (default " default-item "): ") ,retrieve-files nil 'confirm)))
              (find-file (funcall ,load-file (if (equal item "") default-item item))))
-         (message "Cannot find project root!")))
-     (global-unset-key ,binding)
-     (global-set-key ,binding (intern ,fn-name))))
+         (message "Cannot find project root!")))))
 
-(defmacro def-jump-to-rails (binding type retrieve-files)
+(defmacro def-jump-to-rails (type retrieve-files)
   "Define a jump-to-rails- function to jump to a particular rails file"
   `(def-jump-to-file
-     ,binding
      ,(concat "jump-to-rails-" type)
      (concat "Get the correct rails " ,type " for the current file")
      (get-rails-root)
@@ -24,34 +21,42 @@
      ,retrieve-files
      (lambda (x) (get-rails-full-item-path ,type x))))
 
-(def-jump-to-rails "\C-xjc" "controller"
+(def-jump-to-rails "controller"
   (mapcar
    (lambda (x) (chomp-ends-with x "_controller.rb"))
    (rails-directory-files "app/controllers" ".*_controller\\.rb$")))
-(def-jump-to-rails "\C-xjh" "helper"
+(def-jump-to-rails "helper"
   (mapcar
    (lambda (x) (chomp-ends-with x "_helper.rb"))
    (rails-directory-files "app/helpers" ".*_helper\\.rb$")))
-(def-jump-to-rails "\C-xjm" "model"
+(def-jump-to-rails "model"
   (mapcar
    (lambda (x) (chomp-ends-with x ".rb"))
    (rails-directory-files "app/models" ".*\\.rb$")))
-(def-jump-to-rails "\C-xjs" "spec"
+(def-jump-to-rails "spec"
   (mapcar
    (lambda (x) (chomp-ends-with x "_spec.rb"))
    (rails-directory-files "spec" ".*_spec\\.rb$")))
-(def-jump-to-rails "\C-xjt" "test"
+(def-jump-to-rails "test"
   (mapcar
    (lambda (x) (chomp-ends-with x "_test.rb"))
    (rails-directory-files "test" ".*_test\\.rb$")))
-(def-jump-to-rails "\C-xjv" "view"
+(def-jump-to-rails "view"
   (mapcar
    (lambda (x) (replace-regexp-in-string "^\\(.+\\)/\\(.+?\\)\\.html\\.erb$" "\\1#\\2" x))
    (rails-directory-files "app/views" ".+/.+?\\.html\\.erb$")))
-(def-jump-to-rails "\C-xjg" "config"
+(def-jump-to-rails "config"
   (mapcar
    (lambda (x) (chomp-ends-with x ""))
    (rails-directory-files "config" ".*\\.*$")))
+
+(keymap-global-set "C-x j c" 'jump-to-rails-controller)
+(keymap-global-set "C-x j h" 'jump-to-rails-helper)
+(keymap-global-set "C-x j m" 'jump-to-rails-model)
+(keymap-global-set "C-x j s" 'jump-to-rails-spec)
+(keymap-global-set "C-x j t" 'jump-to-rails-test)
+(keymap-global-set "C-x j v" 'jump-to-rails-view)
+(keymap-global-set "C-x j g" 'jump-to-rails-config)
 
 (defun rails-directory-files (path regex)
   "Like a recursive version of directory-files, but for rails directories"
