@@ -37,6 +37,10 @@
   (mapcar
    (lambda (x) (chomp-ends-with x ""))
    (rails-directory-files "config" ".*\\.*$")))
+(def-jump-to-rails "lib"
+  (mapcar
+   (lambda (x) (chomp-ends-with x ""))
+   (rails-directory-files "lib" ".*\\.*$")))
 
 (defun rails-directory-files (path regex)
   "Like a recursive version of directory-files, but for rails directories"
@@ -67,6 +71,7 @@
           ((is-rails-test file-name) "test")
           ((is-rails-view file-name) "view")
           ((is-rails-config file-name) "config")
+          ((is-rails-lib file-name) "lib")
           (t nil))))
 
 (defun get-rails-item (&optional file-name-or-current)
@@ -141,6 +146,10 @@
   "Determine if the given file-name is a rails config"
   (has-parent-directory file-name (get-rails-path "config")))
 
+(defun is-rails-lib (file-name)
+  "Determine if the given file-name is a rails lib"
+  (has-parent-directory file-name (get-rails-path "lib")))
+
 (defun get-rails-full-item-path (type full-item)
   "Get an item path relative to the current rails root"
   (let* ((item (nth 0 (split-rails-item full-item)))
@@ -160,7 +169,8 @@
         ((equal type "spec") (get-rails-path (concat "spec/" item "_spec.rb")))
         ((equal type "test") (get-rails-path (concat "test/" item "_test.rb")))
         ((equal type "view") (get-rails-path (concat "app/views/" item "/" action ".html.erb")))
-        ((equal type "config") (get-rails-path (concat "config/" item)))))
+        ((equal type "config") (get-rails-path (concat "config/" item)))
+        ((equal type "lib") (get-rails-path (concat "lib/" item)))))
 
 (defun toggle-plural (item)
   "Toggle the plural state of the given item"

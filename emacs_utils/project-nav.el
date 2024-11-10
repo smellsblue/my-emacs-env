@@ -33,6 +33,7 @@
 (bind-and-def-jump-to-project-file "C-x j t" "test")
 (bind-and-def-jump-to-project-file "C-x j v" "view")
 (bind-and-def-jump-to-project-file "C-x j g" "config")
+(bind-and-def-jump-to-project-file "C-x j l" "lib")
 
 (defun jump-to-project-file (project-type file-type)
   "Invoke the interactive jump-to-rails-TYPE function, if it exists"
