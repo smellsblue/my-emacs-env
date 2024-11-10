@@ -31,8 +31,8 @@
    (rails-directory-files "test" ".*_test\\.rb$")))
 (def-jump-to-rails "view"
   (mapcar
-   (lambda (x) (replace-regexp-in-string "^\\(.+\\)/\\(.+?\\)\\.html\\.erb$" "\\1#\\2" x))
-   (rails-directory-files "app/views" ".+/.+?\\.html\\.erb$")))
+   (lambda (x) (replace-regexp-in-string "^\\(.+\\)/\\(.+?\\)\\.erb$" "\\1#\\2" x))
+   (rails-directory-files "app/views" ".+/.+?\\.erb$")))
 (def-jump-to-rails "config"
   (mapcar
    (lambda (x) (chomp-ends-with x ""))
@@ -59,7 +59,7 @@
           ((equal for-type "model") item)
           ((equal for-type "spec") (concat (toggle-plural non-test-type) "/" item test-suffix))
           ((equal for-type "test") (concat (toggle-plural non-test-type) "/" item test-suffix))
-          ((equal for-type "view") (concat item action)))))
+          ((equal for-type "view") (concat item action ".html")))))
 
 (defun get-rails-type (&optional file-name-or-current)
   "Get the rails item type from the given file name or current buffer file name"
@@ -168,7 +168,7 @@
         ((equal type "model") (get-rails-path (concat "app/models/" item ".rb")))
         ((equal type "spec") (get-rails-path (concat "spec/" item "_spec.rb")))
         ((equal type "test") (get-rails-path (concat "test/" item "_test.rb")))
-        ((equal type "view") (get-rails-path (concat "app/views/" item "/" action ".html.erb")))
+        ((equal type "view") (get-rails-path (concat "app/views/" item "/" action ".erb")))
         ((equal type "config") (get-rails-path (concat "config/" item)))
         ((equal type "lib") (get-rails-path (concat "lib/" item)))))
 
