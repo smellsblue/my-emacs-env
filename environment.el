@@ -24,6 +24,10 @@
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . javascript-mode))
+(add-hook 'java-mode-hook
+          (lambda ()
+            (c-set-offset 'statement-cont '++)
+            (c-set-offset 'arglist-cont-nonempty '++)))
 (add-hook 'shell-mode-hook
           (lambda ()
             (if (fboundp 'display-line-numbers-mode)
